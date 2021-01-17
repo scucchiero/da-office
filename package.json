@@ -25,7 +25,8 @@
     "nodemon": "^2.0.7"
   },
   "scripts": {
+    "postinstall": "cd client && npm run install && npm run build",
     "dev": "nodemon server.js -w server.js",
-    "start": "cd client && npm run build && cd .. && node server.js"
+    "start": "node server.js"
   }
 }
