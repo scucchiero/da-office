@@ -34,6 +34,8 @@ const App = () => {
   const classes = useStyles();
   const dialog = useDialog();
 
+  const OWNER_NAME = process.env.REACT_APP_OWNER_NAME;
+
   const lobbied = useMemo(() => Boolean(
     lobby.find((p) => socket.current.id === p.id)
   ), [lobby]);
@@ -51,10 +53,10 @@ const App = () => {
       ringtoneSound.play();
       incomingSignal.current = signal;
       dialog.create({
-        title: "Franco is ready to take your call!",
+        title: `${OWNER_NAME} is ready to take your call!`,
         cancelLabel: "Cancel",
         confirmLabel: "Answer",
-        onContinue: () => setCallTo({ name: "Franco" }),
+        onContinue: () => setCallTo({ name: "OWNER_NAME" }),
         onCancel: () => socket.current.emit("rejectCall")
       });
     });
@@ -95,7 +97,7 @@ const App = () => {
       <Grow in style={{ transitionDelay: 100 }}>
         <Box className={classes.innerContainer}>
           <Typography variant="h4" className={classes.bold}>
-            Franco's Office
+            {`${OWNER_NAME}'s Office`}
           </Typography>
           <Paper className={classes.form}>
             {
@@ -124,7 +126,7 @@ const App = () => {
                       <Typography variant="body2">
                         Alrighty, now is time to wait.
                         <br />
-                        Franco will pick up anytime soon!
+                        {`${OWNER_NAME} will pick up anytime soon!`}
                       </Typography>
                     )
 
@@ -172,7 +174,7 @@ const App = () => {
                   onClick={claimOwnership}
                 >
                   <Typography variant="caption">
-                    Are you Franco? Buzz yourself in!
+                    {`Are you ${OWNER_NAME}? Buzz yourself in!`}
                   </Typography>
                 </Button>
               )
