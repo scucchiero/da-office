@@ -1,0 +1,30 @@
+{
+  "name": "da-office",
+  "version": "0.1.0",
+  "main": "server.js",
+  "repository": "https://github.com/scucchiero/da-office",
+  "author": "Franco Scucchiero <scucchiero@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "awake-heroku": "^1.0.17",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "socket.io": "^3.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prefer-arrow": "^1.2.2",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-app": "^6.2.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^4.3.7",
+    "lint-staged": "^10.5.3",
+    "nodemon": "^2.0.7"
+  },
+  "scripts": {
+    "dev": "nodemon server.js -w server.js"
+  }
+}

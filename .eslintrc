@@ -1,0 +1,147 @@
+{
+  "ignorePatterns": "build/",
+  "env": {
+    "browser": true,
+    "es2020": true
+  },
+  "extends": [
+    "airbnb"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "prefer-arrow"
+  ],
+  "settings": {
+    "react": {
+      "version": "17",
+    },
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": [
+          "node_modules",
+          "src/"
+        ]
+      }
+    }
+  },
+  "rules": {
+    "no-param-reassign": "off",
+    "react/prop-types": "off",
+    "global-require": "off",
+    "react/jsx-filename-extension": "off",
+    "no-nested-ternary": "off",
+    "react/no-unescaped-entities": "off",
+    "jsx-a11y/accessible-emoji": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "react/jsx-props-no-spreading": "off",
+    "strict": [
+      "error",
+      "global"
+    ],
+    "react/no-array-index-key": "off",
+    "import/prefer-default-export": "off",
+    "no-console": "off",
+    "no-inline-comments": "error",
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "indent": [
+      "error",
+      2
+    ],
+    "arrow-parens": "error",
+    "arrow-spacing": "error",
+    "arrow-body-style": "error",
+    "no-confusing-arrow": "error",
+    "prefer-arrow-callback": "warn",
+    "key-spacing": "error",
+    "keyword-spacing": "error",
+    "no-duplicate-imports": "error",
+    "rest-spread-spacing": "error",
+    "no-useless-rename": "error",
+    "no-irregular-whitespace": "error",
+    "comma-style": [
+      "error",
+      "last"
+    ],
+    "comma-dangle": [
+      "error",
+      "only-multiline"
+    ],
+    "quote-props": [
+      "error",
+      "as-needed"
+    ],
+    "no-multi-spaces": "error",
+    "semi": [
+      "error",
+      "always"
+    ],
+    "prefer-arrow/prefer-arrow-functions": [
+      "error",
+      {
+        "disallowPrototype": true,
+        "singleReturnOnly": false,
+        "classPropertiesAllowed": false
+      }
+    ],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1
+      }
+    ],
+    "space-infix-ops": "error",
+    "spaced-comment": "error",
+    "func-style": [
+      "error",
+      "expression"
+    ],
+    "no-trailing-spaces": [
+      2,
+      {
+        "skipBlankLines": true
+      }
+    ],
+    "eol-last": [
+      "error",
+      "always"
+    ],
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "curly": [
+      "error",
+      "multi-line"
+    ],
+    "lines-between-class-members": [
+      "error",
+      "always"
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "jsx-a11y/media-has-caption": "off",
+    "no-underscore-dangle": 0,
+    "nonblock-statement-body-position": [
+      "error",
+      "beside"
+    ],
+    "comma-spacing": [
+      "error",
+      {
+        "before": false,
+        "after": true
+      }
+    ]
+  }
+}
