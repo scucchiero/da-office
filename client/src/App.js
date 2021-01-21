@@ -56,7 +56,7 @@ const App = () => {
         title: `${OWNER_NAME} is ready to take your call!`,
         cancelLabel: "Cancel",
         confirmLabel: "Answer",
-        onContinue: () => setCallTo({ name: "OWNER_NAME" }),
+        onContinue: () => setCallTo({ name: OWNER_NAME }),
         onCancel: () => socket.current.emit("rejectCall")
       });
     });

@@ -98,7 +98,8 @@ export default ({
           else socket.emit("acceptCall", data);
         });
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         ToastsStore.error("You must grant video and audio permission in order to take the call");
       });
       
