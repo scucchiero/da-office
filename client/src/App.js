@@ -3,19 +3,19 @@ import React, {
 } from "react";
 import {
   Avatar, Box, Button, Container,
-  Grow,
-  IconButton, List, ListItem,
+  Grow, IconButton, LinearProgress, List, ListItem,
   ListItemAvatar, ListItemSecondaryAction,
   ListItemText, Paper, TextField, Typography
 } from "@material-ui/core";
-import ringtone from "assets/ringtone.mp3";
-import io from "socket.io-client";
-import { Howl } from "howler";
-import { useDialog } from "components/DialogProvider";
-import Background from "components/Background";
-import { Add, Call as CallIcon, Cancel } from "@material-ui/icons";
 import moment from "moment";
+import { Howl } from "howler";
+import Peer from "simple-peer";
+import io from "socket.io-client";
 import { ToastsStore } from "react-toasts";
+import ringtone from "assets/ringtone.mp3";
+import Background from "components/Background";
+import { useDialog } from "components/DialogProvider";
+import { Add, Call as CallIcon, Cancel } from "@material-ui/icons";
 import Call from "./Call";
 import useStyles from "./App.style";
 
@@ -79,7 +79,7 @@ const App = () => {
     });
   };
 
-  if (callTo) {
+  if (callTo && lobbied) {
     return (
       <Call
         initiator={owner}
@@ -100,41 +100,53 @@ const App = () => {
             {`${OWNER_NAME}'s Office`}
           </Typography>
           <Paper className={classes.form}>
-            {
-              !owner
-                ? (
-                  !lobbied ? (
-                    <Box>
-                      <Typography paragraph>
-                        Write down your name and join the queue!
-                      </Typography>
-                      <Box className={classes.inputContainer}>
-                        <TextField
-                          onChange={({ target: { value } }) => setName(value)}
-                          fullWidth
-                        />
-                        <IconButton
-                          disabled={name.length < 2}
-                          onClick={joinLobby}
-                        >
-                          <Add />
-                        </IconButton>
-                      </Box>
-                    </Box>
-                  )
-                    : (
-                      <Typography variant="body2">
-                        Alrighty, now is time to wait.
-                        <br />
-                        {`${OWNER_NAME} will pick up anytime soon!`}
-                      </Typography>
-                    )
 
+            {
+              !Peer.WEBRTC_SUPPORT
+                ? (
+                  <>
+                    <Typography>
+                      Your browser is too lame for this app, up your game!
+                    </Typography>
+                    <LinearProgress />
+                  </>
                 )
                 : (
-                  <Typography>
-                    Answer people in the queue
-                  </Typography>
+                  !owner
+                    ? (
+                      !lobbied ? (
+                        <Box>
+                          <Typography paragraph>
+                            Write down your name and join the queue!
+                          </Typography>
+                          <Box className={classes.inputContainer}>
+                            <TextField
+                              onChange={({ target: { value } }) => setName(value)}
+                              fullWidth
+                            />
+                            <IconButton
+                              disabled={name.length < 2}
+                              onClick={joinLobby}
+                            >
+                              <Add />
+                            </IconButton>
+                          </Box>
+                        </Box>
+                      )
+                        : (
+                          <Typography variant="body2">
+                            Alrighty, now is time to wait.
+                            <br />
+                            {`${OWNER_NAME} will pick up anytime soon!`}
+                          </Typography>
+                        )
+
+                    )
+                    : (
+                      <Typography>
+                        Answer people in the queue
+                      </Typography>
+                    )
                 )
             }
             <List>

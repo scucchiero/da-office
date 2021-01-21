@@ -10,6 +10,11 @@ import { ToastsStore } from "react-toasts";
 import Peer from "simple-peer";
 import useStyles from "./Call.style";
 
+const {
+  REACT_APP_ICE_SERVER_PASSWORD,
+  REACT_APP_ICE_SERVER_USERNAME
+} = process.env;
+
 export default ({
   onEndCall, initiator, incomingSignal, socket, peerInfo
 }) => {
@@ -76,6 +81,20 @@ export default ({
         selfPeer.current = new Peer({
           trickle: false,
           initiator,
+          config: {
+            iceServers: [
+              {
+                urls: "stun:numb.viagenie.ca",
+                username: REACT_APP_ICE_SERVER_USERNAME,
+                credential: REACT_APP_ICE_SERVER_PASSWORD
+              },
+              {
+                urls: "turn:numb.viagenie.ca",
+                username: REACT_APP_ICE_SERVER_USERNAME,
+                credential: REACT_APP_ICE_SERVER_PASSWORD
+              }
+            ]
+          },
           stream,
         });
         selfMainStream.current = stream;
