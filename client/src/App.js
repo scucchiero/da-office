@@ -79,7 +79,7 @@ const App = () => {
     });
   };
 
-  if (callTo && lobbied) {
+  if (callTo) {
     return (
       <Call
         initiator={owner}
