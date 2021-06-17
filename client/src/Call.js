@@ -5,7 +5,7 @@ import {
   CallEnd, Mic, Videocam, MicOff, VideocamOff, ScreenShare, StopScreenShare
 } from "@material-ui/icons";
 import clsx from "clsx";
-import React, { useState, useLayoutEffect, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { ToastsStore } from "react-toasts";
 import Peer from "simple-peer";
 import useStyles from "./Call.style";
@@ -70,7 +70,7 @@ export default ({
     }
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     navigator
       .mediaDevices
       .getUserMedia({
@@ -119,7 +119,7 @@ export default ({
       })
       .catch((err) => {
         console.log(err);
-        ToastsStore.error("You must grant video and audio permission in order to take the call");
+        ToastsStore.error("It seems you don't have your camera connected");
       });
       
     return () => {

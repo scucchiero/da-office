@@ -100,7 +100,6 @@ const App = () => {
             {`${OWNER_NAME}'s Office`}
           </Typography>
           <Paper className={classes.form}>
-
             {
               !Peer.WEBRTC_SUPPORT
                 ? (

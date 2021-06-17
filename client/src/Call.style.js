@@ -1,4 +1,4 @@
-const { makeStyles } = require("@material-ui/styles");
+import { makeStyles } from "@material-ui/styles";
 
 export default makeStyles((theme) => ({
   mainVideo: {
